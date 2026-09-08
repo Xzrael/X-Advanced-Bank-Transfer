@@ -1,0 +1,502 @@
+/* =========================================================
+   X BANK TRANSFER - WooCommerce Bank Transfer Payment Styling
+   Colors are CSS variables injected from the plugin settings
+   (WooCommerce > Settings > Payments > X Bank Transfer > Checkout styling)
+   Brand defaults: primary #9804CC | accent #FFBE56
+   ========================================================= */
+
+:root {
+    --xbt-primary: #9804CC;
+    --xbt-accent: #FFBE56;
+
+    --xbt-primary-soft: rgba(152, 4, 204, 0.06);
+    --xbt-accent-soft: rgba(255, 190, 86, 0.10);
+
+    --xbt-primary-border: rgba(152, 4, 204, 0.15);
+    --xbt-primary-border-strong: rgba(152, 4, 204, 0.25);
+    --xbt-primary-dashed: rgba(152, 4, 204, 0.35);
+
+    --xbt-primary-shadow: rgba(152, 4, 204, 0.08);
+    --xbt-primary-shadow-soft: rgba(152, 4, 204, 0.04);
+
+    --xbt-primary-darker: #7d03a9;
+}
+
+.woocommerce-bacs-bank-details {
+    position: relative;
+    width: 100%;
+    max-width: 760px;
+    margin: 30px auto !important;
+    padding: 32px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--xbt-primary-soft),
+            var(--xbt-accent-soft)
+        );
+
+    border: 1px solid var(--xbt-primary-border);
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 35px rgba(38, 12, 48, 0.08),
+        0 2px 8px var(--xbt-primary-shadow-soft);
+
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+
+/* Decorative top accent */
+.woocommerce-bacs-bank-details::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+
+    background: linear-gradient(
+        90deg,
+        var(--xbt-primary) 0%,
+        var(--xbt-primary) 65%,
+        var(--xbt-accent) 65%,
+        var(--xbt-accent) 100%
+    );
+}
+
+
+/* ---------------------------------------------------------
+   BANK DETAILS HEADING
+   --------------------------------------------------------- */
+
+.woocommerce-bacs-bank-details
+.wc-bacs-bank-details-heading {
+    margin: 10px 0 20px !important;
+
+    color: var(--xbt-primary) !important;
+
+    font-size: 25px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+
+    letter-spacing: -0.4px;
+
+    text-align: left;
+}
+
+
+/* Small gold line beneath heading */
+.woocommerce-bacs-bank-details
+.wc-bacs-bank-details-heading::after {
+    content: "";
+    display: block;
+
+    width: 48px;
+    height: 3px;
+
+    margin-top: 10px;
+
+    background: var(--xbt-accent);
+    border-radius: 20px;
+}
+
+
+/* ---------------------------------------------------------
+   ACCOUNT NAME
+   --------------------------------------------------------- */
+
+.woocommerce-bacs-bank-details
+.wc-bacs-bank-details-account-name {
+    margin: 0 0 18px !important;
+
+    padding: 14px 16px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--xbt-primary-border);
+    border-left: 12px solid var(--xbt-accent);
+
+    border-radius: 5px;
+
+    color: #333333;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    box-shadow: 0 3px 12px var(--xbt-primary-shadow-soft);
+}
+
+
+/* Remove browser underline from account name */
+.woocommerce-bacs-bank-details
+.wc-bacs-bank-details-account-name u {
+    color: var(--xbt-primary);
+    text-decoration: none;
+    font-weight: 800;
+}
+
+
+/* ---------------------------------------------------------
+   BANK DETAILS LIST
+   --------------------------------------------------------- */
+
+.woocommerce-bacs-bank-details
+ul.wc-bacs-bank-details,
+.woocommerce-bacs-bank-details
+ul.bacs_details {
+    list-style: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* Individual bank detail */
+.woocommerce-bacs-bank-details
+ul.bacs_details li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    min-height: 54px;
+
+    margin: 0 !important;
+    padding: 14px 18px !important;
+
+    background: #ffffff;
+
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+
+    color: #555555;
+
+    font-size: 15px;
+    line-height: 1.4;
+
+    box-sizing: border-box;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+/* Hover effect */
+.woocommerce-bacs-bank-details
+ul.bacs_details li:hover {
+    transform: translateY(-1px);
+
+    border-color: var(--xbt-primary-border-strong);
+
+    box-shadow:
+        0 6px 18px var(--xbt-primary-shadow);
+}
+
+
+/* Bank labels */
+.woocommerce-bacs-bank-details
+ul.bacs_details li.bank_name::before {
+    content: "BANK";
+}
+
+.woocommerce-bacs-bank-details
+ul.bacs_details li.account_number::before {
+    content: "ACCOUNT";
+}
+
+
+/* Better label positioning */
+.woocommerce-bacs-bank-details
+ul.bacs_details li::before {
+    flex: 0 0 75px;
+
+    color: var(--xbt-primary);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+/* Strong values */
+.woocommerce-bacs-bank-details
+ul.bacs_details li strong {
+    margin-left: auto;
+
+    color: #222222;
+
+    font-size: 16px;
+    font-weight: 800;
+
+    text-align: right;
+}
+
+
+/* Account number emphasis */
+.woocommerce-bacs-bank-details
+ul.bacs_details li.account_number strong {
+    color: var(--xbt-primary);
+
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   PAYMENT RECEIPT UPLOAD
+   ========================================================= */
+
+#custom_input {
+    width: 100%;
+    max-width: 760px;
+
+    margin: 2px auto 30px !important;
+    padding: 24px !important;
+
+    background: #ffffff;
+
+    border: 1px solid var(--xbt-primary-border);
+    border-radius: 16px;
+
+    box-shadow:
+        0 8px 28px var(--xbt-primary-shadow-soft);
+
+    box-sizing: border-box;
+}
+
+
+/* Receipt label */
+#custom_input
+label[for="bank_payment_receipt"] {
+    display: block;
+
+    margin: 0 0 12px !important;
+
+    color: #222222;
+
+    font-size: 15px;
+    font-weight: 750;
+
+    line-height: 1.4;
+}
+
+
+/* Add upload description */
+#custom_input
+label[for="bank_payment_receipt"]::after {
+    content: "  JPG, JPEG, PNG or PDF";
+
+    color: #999999;
+
+    font-size: 11px;
+    font-weight: 500;
+}
+
+
+/* File input */
+#custom_input
+.bank_payment_receipt {
+    display: block;
+
+    width: 100%;
+
+    padding: 12px;
+
+    background: #faf7fc;
+
+    border: 1.5px dashed var(--xbt-primary-dashed);
+    border-radius: 10px;
+
+    color: #555555;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    box-sizing: border-box;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+/* File input hover */
+#custom_input
+.bank_payment_receipt:hover {
+    background: #f8f0fb;
+    border-color: var(--xbt-primary);
+}
+
+
+/* File upload button - Chrome/Edge */
+#custom_input
+.bank_payment_receipt::file-selector-button {
+    margin-right: 12px;
+
+    padding: 9px 16px;
+
+    background: var(--xbt-primary);
+    color: #ffffff;
+
+    border: none;
+    border-radius: 7px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+#custom_input
+.bank_payment_receipt::file-selector-button:hover {
+    background: var(--xbt-primary-darker);
+}
+
+
+/* Upload status message */
+.xbt-upload-status,
+#xbt_upload_status {
+    margin: 10px 0 0 !important;
+
+    color: #555555;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* ---------------------------------------------------------
+   ADMIN STYLING EDITOR PREVIEW
+   --------------------------------------------------------- */
+
+.xbt-styling-preview .xbt-preview-box {
+    margin: 12px 0 0;
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--xbt-primary-soft, rgba(152, 4, 204, 0.06)),
+            var(--xbt-accent-soft, rgba(255, 190, 86, 0.10))
+        );
+
+    border: 1px solid var(--xbt-primary-border, rgba(152, 4, 204, 0.15));
+    border-radius: 16px;
+
+    box-sizing: border-box;
+}
+
+.xbt-styling-preview .xbt-preview-upload {
+    padding: 18px;
+
+    background: #ffffff;
+
+    border: 1.5px dashed var(--xbt-primary-dashed, rgba(152, 4, 204, 0.35));
+    border-radius: 10px;
+}
+
+.xbt-styling-preview .xbt-preview-upload label {
+    display: block;
+
+    margin: 0 0 10px;
+
+    color: #222222;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.xbt-styling-preview .xbt-preview-file {
+    display: inline-block;
+
+    padding: 8px 14px;
+
+    background: var(--xbt-primary, #9804CC);
+    color: #ffffff;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE RESPONSIVENESS
+   --------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    .woocommerce-bacs-bank-details {
+        margin: 20px 0 !important;
+        padding: 24px 18px !important;
+
+        border-radius: 14px;
+    }
+
+    .woocommerce-bacs-bank-details
+    .wc-bacs-bank-details-heading {
+        font-size: 21px !important;
+    }
+
+    /* Each bank detail fills its own full row, with a bigger value */
+    .woocommerce-bacs-bank-details
+    ul.bacs_details li {
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        gap: 3px;
+
+        padding: 13px 14px !important;
+    }
+
+    .woocommerce-bacs-bank-details
+    ul.bacs_details li::before {
+        margin-bottom: 2px;
+    }
+
+    .woocommerce-bacs-bank-details
+    ul.bacs_details li strong {
+        margin-left: 0;
+
+        text-align: left;
+
+        word-break: break-word;
+
+        font-size: 18px;
+    }
+
+    .woocommerce-bacs-bank-details
+    ul.bacs_details li.account_number strong {
+        color: var(--xbt-primary);
+
+        font-size: 21px;
+        letter-spacing: 0.5px;
+        word-break: break-all;
+    }
+
+    #custom_input {
+        margin: 18px 0 25px !important;
+        padding: 20px 16px !important;
+
+        border-radius: 14px;
+    }
+
+    #custom_input
+    .bank_payment_receipt {
+        font-size: 13px;
+    }
+}
